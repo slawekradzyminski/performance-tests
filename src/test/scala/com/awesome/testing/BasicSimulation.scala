@@ -9,21 +9,17 @@ import scala.language.postfixOps
 class BasicSimulation extends Simulation {
 
   val httpProtocol = http
-    .baseUrl("http://localhost:8080") // Here is the root for all relative URLs
-    .acceptHeader(
-      "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-    ) // Here are the common headers
-    .acceptEncodingHeader("gzip, deflate")
-    .acceptLanguageHeader("en-US,en;q=0.5")
-    .userAgentHeader(
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:16.0) Gecko/20100101 Firefox/16.0"
-    )
+    .baseUrl("http://localhost:4000") // Here is the root for all relative URLs
+    .header("Accept", "application/json")
+    .header("Content-Type", "application/json")
 
   val scn =
-    scenario("Scenario Name")
+    scenario("Training scenarion")
       .exec(
-        http("request_1")
-          .get("/login")
+        http("login request")
+          .post("/users/signin")
+          .body(ElFileBody("bodies/login.json")).asJson
+          .check(status.is(200))
       )
       .pause(1)
 
