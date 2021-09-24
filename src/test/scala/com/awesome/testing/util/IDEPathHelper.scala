@@ -1,3 +1,5 @@
+package com.awesome.testing.util
+
 import java.nio.file.Paths
 
 object IDEPathHelper {
