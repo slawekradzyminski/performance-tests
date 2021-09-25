@@ -9,7 +9,7 @@ import io.gatling.core.structure.ScenarioBuilder
 
 object TrainingScenario {
 
-  val scn: ScenarioBuilder =
+  val trainingScenario: ScenarioBuilder =
     scenario("Training scenarion")
       .feed(credentialsFeeder)
       .exec(registrationRequest)

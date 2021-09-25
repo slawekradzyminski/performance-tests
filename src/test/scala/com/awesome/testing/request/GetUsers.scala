@@ -14,4 +14,9 @@ object GetUsers {
       .check(status.is(200))
   }
 
+  val getUsersAsAdminRequest: HttpRequestBuilder = {
+    getUsersRequest
+      .check(jsonPath("$..username").findAll.optional.saveAs("usernames"))
+  }
+
 }
