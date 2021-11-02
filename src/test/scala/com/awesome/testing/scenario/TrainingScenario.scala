@@ -11,6 +11,7 @@ object TrainingScenario {
   val trainingScenario: ScenarioBuilder = scenario("Training scenario")
     .feed(credentialsFeeder)
     .exec(registrationRequest)
+    .pause(10)
     .exec(loginRequest)
 
 }
