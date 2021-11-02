@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.CredentialsFeeder.credentialsFeeder
+import com.awesome.testing.request.EditUser.editUserRequest
 import com.awesome.testing.request.GetUsers.getUsersRequest
 import com.awesome.testing.request.Login.loginRequest
 import com.awesome.testing.request.Register.registrationRequest
@@ -16,5 +17,7 @@ object TrainingScenario {
     .exec(loginRequest)
     .pause(5)
     .exec(getUsersRequest)
+    .pause(3)
+    .exec(editUserRequest)
 
 }
