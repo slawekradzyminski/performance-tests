@@ -5,10 +5,10 @@ import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 
 object Login {
-
+  
   val loginRequest: HttpRequestBuilder = http("Admin login request")
     .post("/users/signin")
-    .body(ElFileBody("bodies/adminLogin.json")).asJson
+    .body(ElFileBody("bodies/login.json")).asJson
     .check(status.is(200))
 
 }
