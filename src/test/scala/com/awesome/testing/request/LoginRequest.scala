@@ -10,5 +10,6 @@ object LoginRequest {
     .post("/users/signin")
     .body(ElFileBody("bodies/login.json")).asJson
     .check(status.is(200))
+    .check(jsonPath("$.token").exists.saveAs("token"))
 
 }
