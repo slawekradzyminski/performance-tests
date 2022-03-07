@@ -4,6 +4,6 @@ object Authorization {
 
   final val Authorization: String = "Authorization"
 
-  val authValue: String = "Bearer " + "${token}"
+  val authValue: String = "Bearer " + "#{token}"
 
 }

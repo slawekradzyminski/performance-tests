@@ -18,9 +18,9 @@ object CleanupScenario {
       .pause(500 millis)
       .exec(getUsersAsAdminRequest)
       .pause(500 millis)
-      .foreach("${usernames}", "username") {
+      .foreach("#{usernames}", "username") {
         doIf(session => !session("username").as[String].equals(LocalConfig.AdminUsername)) {
-          exec(deleteUserRequest("${username}"))
+          exec(deleteUserRequest("#{username}"))
         }
       }
 }
