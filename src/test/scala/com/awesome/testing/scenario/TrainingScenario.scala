@@ -2,13 +2,19 @@ package com.awesome.testing.scenario
 
 import com.awesome.testing.request.Login.loginRequest
 import io.gatling.core.Predef._
-import io.gatling.core.structure.ScenarioBuilder
+import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 
 object TrainingScenario {
 
-  val trainingScenario: ScenarioBuilder = scenario("Training scenarion")
-    .exec(
-      loginRequest
-    )
+
+  private val credentialsFeeder = csv("data/credentials.csv").circular
+
+  /**
+   * Ścieżka jaką wykona jeden użytkownik, tj. jedna sesja Gatlinga
+   * Kod poniżej ma jedną osobną sesję
+   */
+  val trainingScenario: ScenarioBuilder = scenario("Training scenario")
+    .feed(credentialsFeeder)
+    .exec(loginRequest)
 
 }
