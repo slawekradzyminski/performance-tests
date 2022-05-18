@@ -17,12 +17,13 @@ object TrainingScenario {
   val trainingScenario: ScenarioBuilder = scenario("Training scenario")
     .feed(credentialsFeeder)
     .exec(registerRequest)
+    .exitHereIfFailed
     .pause(1)
     .exec(loginRequest)
+    .exitHereIfFailed
     .pause(1)
     .exec(getUsersRequest)
     .pause(1)
-    .exitHereIfFailed
     .exec(editUserRequest)
 
 
