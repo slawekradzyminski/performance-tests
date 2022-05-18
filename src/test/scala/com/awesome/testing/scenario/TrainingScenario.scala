@@ -22,6 +22,7 @@ object TrainingScenario {
     .pause(1)
     .exec(getUsersRequest)
     .pause(1)
+    .exitHereIfFailed
     .exec(editUserRequest)
 
 
