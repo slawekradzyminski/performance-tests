@@ -1,0 +1,10 @@
+{
+  "email": "#{email}",
+  "firstName": "#{firstName}",
+  "lastName": "#{lastName}",
+  "password": "#{password}",
+  "roles": [
+    "ROLE_CLIENT"
+  ],
+  "username": "#{username}"
+}
