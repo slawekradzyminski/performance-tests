@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.UserFeeder.userFeeder
+import com.awesome.testing.request.Edit.editUserRequest
 import com.awesome.testing.request.GetAllUsers.getAllUsersRequest
 import com.awesome.testing.request.Login.loginRequest
 import com.awesome.testing.request.Me.meRequest
@@ -19,8 +20,14 @@ object TrainingScenario {
     .pause(2)
     .exec(getAllUsersRequest)
     .pause(2)
-    .exec(refreshRequest)
+    .randomSwitch(
+      50.0 -> exec(refreshRequest)
+    )
     .pause(2)
-    .exec(meRequest)
+    .repeat(2) {
+      exec(meRequest)
+    }
+    .pause(2)
+    .exec(editUserRequest)
 
 }

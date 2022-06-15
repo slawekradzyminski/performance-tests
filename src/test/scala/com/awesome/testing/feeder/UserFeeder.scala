@@ -14,7 +14,7 @@ object UserFeeder {
     )
   }
 
-  private def getRandomString = {
+  def getRandomString: String = {
     Random.alphanumeric.take(5).mkString
   }
 }
