@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.UserFeeder.userFeeder
+import com.awesome.testing.request.GetAllUsers.getAllUsersRequest
 import com.awesome.testing.request.Login.loginRequest
 import com.awesome.testing.request.Register.registerRequest
 import io.gatling.core.Predef._
@@ -14,5 +15,6 @@ object TrainingScenario {
     .pause(2)
     .exec(loginRequest)
     .pause(2)
+    .exec(getAllUsersRequest)
 
 }
