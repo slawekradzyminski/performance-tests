@@ -12,7 +12,7 @@ class BasicSimulation extends Simulation {
   setUp(
     trainingScenario
       .inject(
-        atOnceUsers(1)
+        atOnceUsers(4)
       )
       .protocols(httpConfig)
   ).assertions(assertions)
