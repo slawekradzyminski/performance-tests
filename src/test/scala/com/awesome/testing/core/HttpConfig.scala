@@ -12,7 +12,7 @@ object HttpConfig {
   val httpProtocol: HttpProtocolBuilder =
     http
       .baseUrl(LocalConfig.BaseUrl)
-      .header("Accept", json)
+      .header("Accept", "*/*")
       .header("Content-Type", json)
 
 }

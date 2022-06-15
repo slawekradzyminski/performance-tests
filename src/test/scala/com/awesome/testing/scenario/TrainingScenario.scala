@@ -4,6 +4,7 @@ import com.awesome.testing.feeder.CredentialsFeeder.credentialsFeeder
 import com.awesome.testing.request.EditUser.editUserRequest
 import com.awesome.testing.request.GetUsers.getUsersRequest
 import com.awesome.testing.request.Login.loginRequest
+import com.awesome.testing.request.Refresh.refreshRequest
 import com.awesome.testing.request.Register.registrationRequest
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
@@ -14,11 +15,13 @@ object TrainingScenario {
     scenario("Training scenario")
       .feed(credentialsFeeder)
       .exec(registrationRequest)
-      .pause(10)
+      .pause(2)
       .exec(loginRequest)
       .pause(1)
       .exec(getUsersRequest)
-      .pause(4)
+      .pause(1)
+      .exec(refreshRequest)
+      .pause(2)
       .exec(editUserRequest)
 
 }

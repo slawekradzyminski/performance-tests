@@ -10,8 +10,8 @@ import scala.language.postfixOps
 class BasicSimulation extends Simulation {
 
   setUp(
-//    trainingScenario.inject(atOnceUsers(1))
-    trainingScenario.inject(rampUsers(200) during(60 seconds))
+    trainingScenario.inject(atOnceUsers(1))
+//    trainingScenario.inject(rampUsers(200) during(60 seconds))
       .protocols(httpProtocol)
   ).assertions(
     global.responseTime.max.lt(3000),
