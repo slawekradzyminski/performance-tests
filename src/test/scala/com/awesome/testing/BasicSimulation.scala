@@ -16,6 +16,7 @@ class BasicSimulation extends Simulation {
       .protocols(httpConfig)
   ).assertions(
     global.responseTime.max.lt(3000),
-    global.successfulRequests.percent.is(100)
+    global.successfulRequests.percent.is(100),
+    details("Get all users request").successfulRequests.count.gt(0)
   )
 }
