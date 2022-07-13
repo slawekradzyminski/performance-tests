@@ -23,9 +23,12 @@ object TrainingScenario {
     .exec(getAllUsersRequest)
     .pause(2)
     .exec(refreshRequest)
+    .randomSwitch(
+      50.0 -> pause(2).exec(meRequest)
+    )
     .pause(2)
-    .exec(meRequest)
-    .pause(2)
-    .exec(emailRequest)
+    .repeat(4) {
+      exec(emailRequest)
+    }
 
 }
