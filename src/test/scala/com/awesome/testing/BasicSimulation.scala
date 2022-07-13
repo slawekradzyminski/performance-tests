@@ -10,7 +10,9 @@ class BasicSimulation extends Simulation {
 
   setUp(
     trainingScenario
-      .inject(atOnceUsers(1))
+      .inject(
+        atOnceUsers(4)
+      )
       .protocols(httpConfig)
   ).assertions(
     global.responseTime.max.lt(3000),
