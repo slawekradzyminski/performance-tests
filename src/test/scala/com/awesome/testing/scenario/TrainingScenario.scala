@@ -19,14 +19,18 @@ object TrainingScenario {
   val trainingScenario: ScenarioBuilder = scenario("Training scenario")
     .feed(credentialsFeeder)
     .exec(register)
+    .exitHereIfFailed
     .pause(3)
     .exec(login)
+    .exitHereIfFailed
+    .repeat(3) {
+      pause(1).exec(getUser)
+    }
     .pause(1)
     .exec(getAllUsers)
     .pause(1)
-    .exec(getUser)
-    .pause(1)
-    .exec(edit)
-    .exitHereIfFailed
+    .randomSwitch(
+      50.0 -> exec(edit)
+    )
 
 }
