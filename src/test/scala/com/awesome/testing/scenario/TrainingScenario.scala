@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.CredentialsFeeder.credentialsFeeder
+import com.awesome.testing.request.Edit.edit
 import com.awesome.testing.request.GetAllUsers.getAllUsers
 import com.awesome.testing.request.GetUser.getUser
 import com.awesome.testing.request.Login.login
@@ -24,6 +25,8 @@ object TrainingScenario {
     .exec(getAllUsers)
     .pause(1)
     .exec(getUser)
+    .pause(1)
+    .exec(edit)
     .exitHereIfFailed
 
 }
