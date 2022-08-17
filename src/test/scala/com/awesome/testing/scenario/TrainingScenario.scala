@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.CredentialsFeeder.credentialsFeeder
+import com.awesome.testing.request.GetAllUsers.getAllUsers
 import com.awesome.testing.request.Login.login
 import com.awesome.testing.request.Register.register
 import io.gatling.core.Predef._
@@ -18,6 +19,8 @@ object TrainingScenario {
     .exec(register)
     .pause(3)
     .exec(login)
+    .pause(1)
+    .exec(getAllUsers)
     .exitHereIfFailed
 
 }

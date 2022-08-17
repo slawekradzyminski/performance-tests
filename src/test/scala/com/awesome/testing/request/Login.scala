@@ -9,6 +9,7 @@ object Login {
   val login: HttpRequestBuilder = http("Login request")
     .post("/users/signin")
     .body(ElFileBody("bodies/login.json")).asJson
+    .check(jsonPath("$.token").exists.saveAs("token"))
     .check(status.is(200))
 
 }
