@@ -1,17 +1,19 @@
 package com.awesome.testing.scenario
 
+import com.awesome.testing.request.Login.login
 import io.gatling.core.Predef._
 import io.gatling.core.structure.ScenarioBuilder
-import io.gatling.http.Predef._
 
 object TrainingScenario {
 
+/*
+  private val credentialsFeeder = csv("data/credentials.csv").circular
+*/
+  private val credentialsFeeder = jsonFile("data/credentials.json").circular
+
   val trainingScenario: ScenarioBuilder = scenario("Training scenario")
-    .exec(
-      http("Admin login request")
-        .post("/users/signin")
-        .body(ElFileBody("bodies/adminLogin.json")).asJson
-        .check(status.is(200))
-    )
+    .feed(credentialsFeeder)
+    .exec(login)
+    .exitHereIfFailed
 
 }
