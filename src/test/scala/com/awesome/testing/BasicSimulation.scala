@@ -23,6 +23,7 @@ class BasicSimulation extends Simulation {
         rampConcurrentUsers(0).to(10) during 1.minutes,
         constantConcurrentUsers(10) during 1.minutes
       )
+
       .protocols(httpConfig)
   ).assertions(
     global.responseTime.percentile(90).lt(3000),
