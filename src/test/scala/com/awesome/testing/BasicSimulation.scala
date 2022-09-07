@@ -1,6 +1,7 @@
 package com.awesome.testing
 
 import com.awesome.testing.config.LocalConfig
+import com.awesome.testing.scenario.RegisterOnlyJourney.registerOnlyScenario
 import com.awesome.testing.scenario.UserJourney.testWarezTestScenario
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
@@ -22,12 +23,13 @@ class BasicSimulation extends Simulation {
 
   setUp(
     testWarezTestScenario.inject(
-      rampUsersPerSec(0).to(desiredRpsForBaseRequest).during(1 minutes),
-      constantUsersPerSec(desiredRpsForBaseRequest).during(2 minutes) randomized,
-      rampUsersPerSec(desiredRpsForBaseRequest).to(0).during(1 minutes)
-    )
+      atOnceUsers(4)
+    ),
+    registerOnlyScenario.inject(
+      atOnceUsers(2)
+    ))
       .protocols(httpConfigForAllGatlingRequests)
-  ).assertions(
+  .assertions(
     global.responseTime.percentile(99).lte(3000),
     global.successfulRequests.percent.is(100)
   )
