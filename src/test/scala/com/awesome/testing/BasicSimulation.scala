@@ -6,6 +6,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
 
+import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 
 class BasicSimulation extends Simulation {
@@ -17,10 +18,14 @@ class BasicSimulation extends Simulation {
     .header("Accept", json)
     .header("Content-Type", json)
 
+  private val desiredRpsForBaseRequest = 5
+
   setUp(
     testWarezTestScenario.inject(
-        atOnceUsers(4)
-      )
+      rampUsersPerSec(0).to(desiredRpsForBaseRequest).during(1 minutes),
+      constantUsersPerSec(desiredRpsForBaseRequest).during(2 minutes) randomized,
+      rampUsersPerSec(desiredRpsForBaseRequest).to(0).during(1 minutes)
+    )
       .protocols(httpConfigForAllGatlingRequests)
   ).assertions(
     global.responseTime.percentile(99).lte(3000),
