@@ -18,9 +18,8 @@ class BasicSimulation extends Simulation {
     .header("Content-Type", json)
 
   setUp(
-    testWarezTestScenario
-      .inject(
-        atOnceUsers(2)
+    testWarezTestScenario.inject(
+        atOnceUsers(4)
       )
       .protocols(httpConfigForAllGatlingRequests)
   ).assertions(

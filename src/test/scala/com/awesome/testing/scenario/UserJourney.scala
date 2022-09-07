@@ -17,8 +17,12 @@ object UserJourney {
       .pause(3)
       .exec(loginRequest)
       .pause(1)
-      .exec(getAllRequest)
+      .repeat(2) {
+        exec(getUserRequest)
+      }
       .pause(2)
-      .exec(getUserRequest)
+      .randomSwitch(
+        50.0 -> exec(getAllRequest)
+      )
 
 }
