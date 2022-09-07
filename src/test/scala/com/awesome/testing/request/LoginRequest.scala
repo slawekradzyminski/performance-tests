@@ -8,7 +8,7 @@ object LoginRequest {
 
   val loginRequest: HttpRequestBuilder = http("Admin login request")
     .post("/users/signin")
-    .body(ElFileBody("bodies/adminLogin.json")).asJson
+    .body(ElFileBody("bodies/login.json")).asJson
     .check(status.is(200))
 
 }

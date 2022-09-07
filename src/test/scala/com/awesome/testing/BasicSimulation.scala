@@ -20,7 +20,7 @@ class BasicSimulation extends Simulation {
   setUp(
     testWarezTestScenario
       .inject(
-        atOnceUsers(1)
+        atOnceUsers(2)
       )
       .protocols(httpConfigForAllGatlingRequests)
   ).assertions(
