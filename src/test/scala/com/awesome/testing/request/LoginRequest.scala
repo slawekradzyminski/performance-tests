@@ -6,7 +6,7 @@ import io.gatling.http.request.builder.HttpRequestBuilder
 
 object LoginRequest {
 
-  val loginRequest: HttpRequestBuilder = http("Admin login request")
+  val loginRequest: HttpRequestBuilder = http("Login request")
     .post("/users/signin")
     .body(ElFileBody("bodies/login.json")).asJson
     .check(status.is(200))
