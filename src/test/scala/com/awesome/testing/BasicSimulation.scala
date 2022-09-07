@@ -24,7 +24,7 @@ class BasicSimulation extends Simulation {
       )
       .protocols(httpConfigForAllGatlingRequests)
   ).assertions(
-    global.responseTime.max.lt(3000),
+    global.responseTime.percentile(99).lte(3000),
     global.successfulRequests.percent.is(100)
   )
 }
