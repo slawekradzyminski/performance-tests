@@ -1,6 +1,7 @@
 package com.awesome.testing.scenario
 
 import com.awesome.testing.feeder.CredentialsFeeder.userData
+import com.awesome.testing.request.EditUserRequest.editUserRequest
 import com.awesome.testing.request.GetAllRequest.getAllRequest
 import com.awesome.testing.request.GetUserRequest.getUserRequest
 import com.awesome.testing.request.LoginRequest.loginRequest
@@ -23,6 +24,9 @@ object UserJourney {
       .pause(2)
       .randomSwitch(
         50.0 -> exec(getAllRequest)
+      )
+      .randomSwitch(
+        50.0 -> exec(editUserRequest)
       )
 
 }
