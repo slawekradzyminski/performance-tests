@@ -23,13 +23,15 @@ class BasicSimulation extends Simulation {
 
   setUp(
     testWarezTestScenario.inject(
-      atOnceUsers(4)
+      rampUsersPerSec(0).to(desiredRpsForBaseRequest).during(1 minutes),
+      constantUsersPerSec(desiredRpsForBaseRequest).during(2 minutes) randomized,
+      rampUsersPerSec(desiredRpsForBaseRequest).to(0).during(1 minutes)
     ),
     registerOnlyScenario.inject(
       atOnceUsers(2)
-    ))
+    )
       .protocols(httpConfigForAllGatlingRequests)
-  .assertions(
+  ).assertions(
     global.responseTime.percentile(99).lte(3000),
     global.successfulRequests.percent.is(100)
   )
