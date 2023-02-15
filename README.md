@@ -3,7 +3,7 @@ Gatling performance tests for my [localstack](https://github.com/slawekradzymins
 ## Running
 
 ```commandline
-mvn gatling:test -Dgatling.simulationClass=com.awesome.testing.BasicSimulation
+mvn gatling:test -Dgatling.simulationClass=com.awesome.testing.JsonPlaceholderSimulation
 ```
 
 ## User cleanup
